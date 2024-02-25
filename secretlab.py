@@ -102,7 +102,7 @@ picture = col2.camera_input("My Security Camera")
 # if picture:
 #     st.image(picture)
 # Define the correct 4-digit code
-correct_code = col2.text_input('Yong Yee Secret Lab',type="password")
+correct_code = col2.text_input('Yong Yee Secret Number',type="password")
 # correct_code = "1234"
 
 # Create input widget for the user to enter the code
