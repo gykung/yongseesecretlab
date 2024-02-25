@@ -1,19 +1,64 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
-from gtts import gTTS
-from pydub import AudioSegment
-from pydub.playback import play
+# from gtts import gTTS
+# from pydub import AudioSegment
+# from pydub.playback import play
 
-def text_to_speech(text):
-    tts = gTTS(text=text, lang='en')
-    audio_file = 'output.mp3'
-    tts.save(audio_file)
-    sound = AudioSegment.from_mp3(audio_file)
-    play(sound)
+# def text_to_speech(text):
+#     tts = gTTS(text=text, lang='en')
+#     audio_file = 'output.mp3'
+#     tts.save(audio_file)
+#     sound = AudioSegment.from_mp3(audio_file)
+#     play(sound)
     
 def speak(text):
-    # Use st.experimental_rerun() to trigger text-to-speech
-    st.experimental_rerun(text=text)
+    # JavaScript code for text-to-speech using the Web Speech API
+    js = f"""
+    <script>
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = "{text}";
+    msg.lang = 'en-US';
+    window.speechSynthesis.speak(msg);
+    </script>
+    """
+    # Use Streamlit's components.html to execute the JavaScript code
+    components.html(js, height=0, width=0)
+
+# def speak(text):
+#     # JavaScript to choose a female voice, assuming one is available among the English voices
+#     js = f"""
+#     <script>
+#     function speakText() {{
+#         var msg = new SpeechSynthesisUtterance();
+#         msg.text = "{text}";
+#         msg.lang = 'en-US';
+
+#         // Get the list of available voices
+#         var voices = window.speechSynthesis.getVoices();
+
+#         // Attempt to find a female voice among the English voices
+#         // This is a heuristic approach and might not always accurately select a female voice
+#         var femaleVoice = voices.find(voice => voice.lang.startsWith('en-') && voice.name.toLowerCase().includes('female'));
+
+#         // If a female voice is found, use it
+#         if (femaleVoice) {{
+#             msg.voice = femaleVoice;
+#         }}
+
+#         window.speechSynthesis.speak(msg);
+#     }}
+
+#     // Due to the asynchronous nature of voice loading, attempt to speak after ensuring voices are loaded
+#     if (speechSynthesis.onvoiceschanged !== undefined) {{
+#         speechSynthesis.onvoiceschanged = speakText;
+#     }} else {{
+#         setTimeout(speakText, 500);
+#     }}
+#     </script>
+#     """
+#     # Execute the JavaScript code
+#     st.markdown(js, unsafe_allow_html=True)
         
         
 # Apply custom CSS styles
@@ -75,3 +120,4 @@ if col2.button("Submit"):
         st.error("Wrong. Hahahahahaha!")
         speak("Wrong. Hahahahahaha!")
         # play_sound("error_sound.mp3")  # Replace with your error sound file path
+
