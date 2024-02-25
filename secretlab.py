@@ -12,19 +12,8 @@ def text_to_speech(text):
     play(sound)
     
 def speak(text):
-    # Check if the browser supports the SpeechSynthesis API
-    if 'speechSynthesis' in window:
-        # Create a new SpeechSynthesisUtterance object
-        utterance = window.speechSynthesis.createSpeechSynthesisUtterance()
-
-        # Set the text to be spoken
-        utterance.text = text
-
-        # Speak the text
-        window.speechSynthesis.speak(utterance)
-    else:
-        # Browser does not support SpeechSynthesis API
-        st.warning("Your browser does not support text-to-speech.")
+    # Use st.experimental_rerun() to trigger text-to-speech
+    st.experimental_rerun(text=text)
         
         
 # Apply custom CSS styles
