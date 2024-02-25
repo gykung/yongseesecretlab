@@ -93,10 +93,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 # def main():
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1,2])
 
-st.title("Yong Yee's Secret Lab!")
-st.image('https://static.wikia.nocookie.net/dog-man/images/1/1e/70D96475-8848-4A44-B573-98C7B9C54203.jpg', caption='Secret Lab')
+col1.title("Yong Yee's Secret Lab!")
+col1.image('https://static.wikia.nocookie.net/dog-man/images/1/1e/70D96475-8848-4A44-B573-98C7B9C54203.jpg', caption='Secret Lab')
 picture = col2.camera_input("My Security Camera")
 
 # if picture:
