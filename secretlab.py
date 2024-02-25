@@ -96,7 +96,7 @@ st.markdown(
 col1, col2 = st.columns(2)
 
 col1.title("Yong Yee's Secret Lab!")
-col1.image('https://static.wikia.nocookie.net/dog-man/images/4/43/PeteysSecretLab.jpg/revision/latest?cb=20200903195755', caption='Secret Lab')
+col1.image('https://static.wikia.nocookie.net/dog-man/images/1/1e/70D96475-8848-4A44-B573-98C7B9C54203.jpg', caption='Secret Lab')
 picture = col2.camera_input("My Security Camera")
 
 # if picture:
