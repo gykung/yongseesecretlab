@@ -97,7 +97,7 @@ col1, col2 = st.columns([1,2])
 
 col1.title("Yong Yee's Secret Lab!")
 col1.image('https://static.wikia.nocookie.net/dog-man/images/1/1e/70D96475-8848-4A44-B573-98C7B9C54203.jpg', caption='Secret Lab')
-picture = col2.camera_input("My Security Camera")
+picture = col2.camera_input("My Secret Lab Security Camera")
 
 # if picture:
 #     st.image(picture)
