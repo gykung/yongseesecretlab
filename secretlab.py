@@ -10,6 +10,23 @@ def text_to_speech(text):
     tts.save(audio_file)
     sound = AudioSegment.from_mp3(audio_file)
     play(sound)
+    
+def speak(text):
+    # Check if the browser supports the SpeechSynthesis API
+    if 'speechSynthesis' in window:
+        # Create a new SpeechSynthesisUtterance object
+        utterance = window.speechSynthesis.createSpeechSynthesisUtterance()
+
+        # Set the text to be spoken
+        utterance.text = text
+
+        # Speak the text
+        window.speechSynthesis.speak(utterance)
+    else:
+        # Browser does not support SpeechSynthesis API
+        st.warning("Your browser does not support text-to-speech.")
+        
+        
 # Apply custom CSS styles
 # Apply custom CSS styles
 st.markdown(
@@ -61,11 +78,11 @@ if col2.button("Submit"):
     if entered_code == correct_code:
         # If the codes match, play success sound and display balloons
         st.success("Correct! Please enter!")
-        text_to_speech("Correct! Please enter!")
+        speak("Correct! Please enter!")
         # play_sound("success_sound.mp3")  # Replace with your success sound file path
         st.balloons()
     else:
         # If the codes do not match, display error message and play error sound
         st.error("Wrong. Hahahahahaha!")
-        text_to_speech("Wrong. Hahahahahaha!")
+        speak("Wrong. Hahahahahaha!")
         # play_sound("error_sound.mp3")  # Replace with your error sound file path
